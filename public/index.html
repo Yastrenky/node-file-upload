@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Express File Upload</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./styles/style.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <div class="container text-center">
+    <div class="col-sm-12">
+      <div class="form">
+        <h1>Upload a Document</h1>
+        <!-- IMAGE UPLOAD FORM -->
+        <form action="/upload" enctype="multipart/form-data" method="POST">
+          <div class="section">Note: Only doc, docx and pdf files are allowed.</div>
+          <div class="inner-wrap">
+            <div style="display: inline-flex">
+              <input type="file" id="photo" name="file-to-upload" size="60" required />
+              <button class="btn btn-danger" type="reset">X</button>
+            </div>
+            <div class="button-section">
+              <input type="submit" name="Upload" value="Upload" />
+            </div>
+          </div>
+      </div>
+      </form>
+    </div>
+  </div>
+  </div>
+</body>
+
+</html>
