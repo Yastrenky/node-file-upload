@@ -3,7 +3,7 @@ const express = require('express');
 const multer = require('multer');
 const bodyParser = require('body-parser');
 const nodeMailer = require('nodemailer');
-var mkdirp = require('mkdirp');
+const mkdirp = require('mkdirp');
 
 // SETUP APP
 const app = express();
@@ -12,14 +12,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use('/', express.static(__dirname + '/public'));
 
-
-
 //MULTER CONFIG: to get file photos to temp server storage
 const multerConfig = {
-
   //specify diskStorage (another option is memory)
   storage: multer.diskStorage({
-
     //specify destination
     destination: function (req, file, next) {
       var dir_name = Date.now();
@@ -64,9 +60,10 @@ const multerConfig = {
 
 /* ROUTES
 **********/
-app.get('/', function (req, res) {
-  res.render('index.html');
-});
+// app.get('/', function (req, res) {
+//   res.render('index.html');
+// });
+
 
 app.post('/upload', multer(multerConfig).single('file-to-upload'), function (req, res) {
   console.log("File path", req.file.path.replace(/\\/g, "/"));
@@ -98,10 +95,7 @@ app.post('/upload', multer(multerConfig).single('file-to-upload'), function (req
     res.json(info);
     // res.redirect('/thank.html');
   });
-
   res.redirect('./#allok');
-
-
 }
 
 );

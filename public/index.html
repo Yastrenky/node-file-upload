@@ -16,17 +16,18 @@
   <div class="container text-center">
     <div class="col-sm-12">
       <div class="form">
-        <h1>Upload a Document</h1>
+        <h1>Upload Job Description</h1>
         <!-- IMAGE UPLOAD FORM -->
         <form action="/upload" enctype="multipart/form-data" method="POST">
           <div class="section">Note: Only doc, docx and pdf files are allowed.</div>
           <div class="inner-wrap">
             <div style="display: inline-flex">
-              <input type="file" id="photo" name="file-to-upload" size="60" required />
-              <button class="btn btn-danger" type="reset">X</button>
+              <input class="custom-file-input" id="file" type="file" id="photo" name="file-to-upload" size="60" required />
+              <button class="btn btn-danger" type="reset" id="reset">X</button>
             </div>
+            <p id="upl-sta" style="display: none">Format not valid</p>
             <div class="button-section">
-              <input type="submit" name="Upload" value="Upload" />
+              <input type="submit" name="Upload" value="Upload" id="submit-button" />
             </div>
           </div>
       </div>
@@ -34,6 +35,28 @@
     </div>
   </div>
   </div>
+  <script>
+
+    document.getElementById("file").addEventListener("change", function (e) {
+      var doc = e.target.value.endsWith(".doc");
+      var docx = e.target.value.endsWith(".docx");
+      var pdf = e.target.value.endsWith(".pdf");
+
+      if (doc || docx || pdf) {
+        document.getElementById("upl-sta").style.display = "none";
+        console.log('valid');
+
+      } else {
+        document.getElementById("upl-sta").style.display = "block";
+        console.log('format no valid');
+      }
+    });
+
+    document.getElementById("reset").addEventListener("click", function (e) {
+      document.getElementById("upl-sta").style.display = "none";
+    })
+
+  </script>
 </body>
 
 </html>
